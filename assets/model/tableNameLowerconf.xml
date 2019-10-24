@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!--***** domain configuration *****-->
+    <bean id="tableNameCamelDomain" class="com.v6.moduleName.funPathDot.tableNameLower.tableNameCamelBigDomain"></bean>
+
+    <!--***** service configuration *****-->
+    <bean id="tableNameCamelService" class="com.v6.moduleName.funPathDot.tableNameLower.tableNameCamelBigService"> 
+        <property name="tableNameCamelDomain"><ref bean="tableNameCamelDomain"/></property>   	
+        <property name="transactionTemplate"><ref bean="jdbcTransactionTemplate"/></property>
+    </bean>
+
+    <!--***** query command configuration *****-->
+    <bean id="tableNameLower_query_init" class="com.v6.moduleName.funPathDot.tableNameLower.tableNameCamelBigQueryPageInitCmd">
+        <property name="tableNameCamelService">
+            <ref bean="tableNameCamelService"/>
+        </property>
+        <property name="forwards">
+            <map>
+                <entry key="query" value="funPathNoFirsttableNameLower/tableNameLower_query_init.jsp" />
+            </map>
+        </property>
+    </bean>
+
+    <!--***** base command configuration *****-->
+    <bean id="tableNameLower" class="com.v6.moduleName.funPathDot.tableNameLower.tableNameCamelBigCmd" singleton="false">
+        <property name="tableNameCamelService">
+            <ref bean="tableNameCamelService"/>
+        </property>
+    </bean>
+
+</beans>
+
+   
