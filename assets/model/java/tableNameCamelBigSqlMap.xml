@@ -6,7 +6,7 @@
         SELECT
             *
         FROM
-            tableNameDecameUpper
+            funQueryTable
         WHERE
             1=1funSqlMapModel
     </select>
