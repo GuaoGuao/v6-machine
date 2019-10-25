@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!--***** domain configuration *****-->
+    <bean id="testMachineDomain" class="com.v6.imr.pc.ttttest.tttest.testmachine.TestMachineDomain"></bean>
+
+    <!--***** service configuration *****-->
+    <bean id="testMachineService" class="com.v6.imr.pc.ttttest.tttest.testmachine.TestMachineService"> 
+        <property name="testMachineDomain"><ref bean="testMachineDomain"/></property>   	
+        <property name="transactionTemplate"><ref bean="jdbcTransactionTemplate"/></property>
+    </bean>
+
+    <!--***** query command configuration *****-->
+    <bean id="testmachine_query_init" class="com.v6.imr.pc.ttttest.tttest.testmachine.TestMachineQueryPageInitCmd">
+        <property name="testMachineService">
+            <ref bean="testMachineService"/>
+        </property>
+        <property name="forwards">
+            <map>
+                <entry key="query" value="ttttest/tttest/testmachine/testmachine_query_init.jsp" />
+            </map>
+        </property>
+    </bean>
+
+    <!--***** base command configuration *****-->
+    <bean id="testmachine" class="com.v6.imr.pc.ttttest.tttest.testmachine.TestMachineCmd" singleton="false">
+        <property name="testMachineService">
+            <ref bean="testMachineService"/>
+        </property>
+    </bean>
+
+</beans>
+
+   
