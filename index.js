@@ -18,4 +18,7 @@ connect((data) => {
   
   createSpinner.stop(true)
 
+},
+() => {
+  querySpinner.stop(true)
 })
