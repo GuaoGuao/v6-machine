@@ -10,7 +10,7 @@
 
 ## 安装
 
-    npm install v6mc -g
+    npm install v6-machine -g
 
 ## 使用说明
 
@@ -23,7 +23,7 @@
        
     2. 修改配置文件
 
-      配置文件是C:\Users\lihang01\.config\configstore\v6-machine.json
+      配置文件是C:\Users\用户名\.config\configstore\v6-machine.json
 
       {
 
